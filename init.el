@@ -20,11 +20,23 @@
 
 (which-key-mode 1)
 
+(use-package nerd-icons
+  :custom
+  (nerd-icons-font-family "JetBrainsMono NF"))
+
+(add-hook 'server-after-make-frame-hook 'dashboard-open)
+
 (use-package dashboard
   :ensure t
   :config
   (setq dashboard-center-content t)
   (setq dashboard-vertically-center-content t)
+  (setq dashboard-startup-banner 3)
+  (setq dashboard-icon-type 'nerd-icons)
+  (setq dashboard-navigation-cycle t)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-display-icons-p t) 
   (dashboard-setup-startup-hook))
 
 (use-package eglot-python-preset
