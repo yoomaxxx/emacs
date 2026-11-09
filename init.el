@@ -18,6 +18,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(which-key-mode 1)
+
 (use-package dashboard
   :ensure t
   :config
