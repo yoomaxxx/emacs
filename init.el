@@ -15,6 +15,10 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight regular :height 120 :width normal)))))
 
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
