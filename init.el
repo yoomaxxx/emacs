@@ -5,8 +5,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons corfu dashboard eglot-python-preset evil evil-collection
-		   nerd-icons))
+   '(all-the-icons apheleia aphelia corfu dashboard eglot-python-preset
+		   evil evil-collection flymake-ruff nerd-icons))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -43,7 +43,7 @@
 (use-package eglot-python-preset
   :ensure t
   :vc (:url "https://github.com/mwolson/eglot-python-preset"
-       :main-file "eglot-python-preset.el"))
+	    :main-file "eglot-python-preset.el"))
 
 (use-package corfu
   :ensure t
@@ -55,7 +55,7 @@
   (corfu-auto-trigger ".")
   (corfu-quit-no-match 'separator)
   :bind
-	(:map corfu-map
+  (:map corfu-map
 	("TAB" . corfu-next)
 	([tab] . corfu-next)
 	("S-TAB" . corfu-previous)
@@ -82,3 +82,14 @@
   :ensure t
   :config
   (evil-collection-init))
+
+(use-package apheleia
+  :ensure t
+  :config
+  (setf (alist-get 'python-mode apheleia-mode-alist) '(ruff-isort ruff))
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff))
+  (apheleia-global-mode +1))
+
+(use-package flymake-ruff
+  :ensure t
+  :hook (python-mode . flymake-ruff-load))
