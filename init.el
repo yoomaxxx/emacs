@@ -87,6 +87,15 @@
   :config
   (evil-collection-init))
 
+(use-package evil-cutlass
+  :vc (:url "https://github.com/kisaragi-hiu/evil-cutlass"
+	    :rev :newest)
+  :after evil
+  :config
+  (evil-cutlass-mode 1)
+  (define-key evil-normal-state-map (kbd "m") #'evil-cutlass-cut)
+  (define-key evil-normal-state-map (kbd "M") #'evil-cutlass-cut-line))
+
 (use-package apheleia
   :ensure t
   :config
